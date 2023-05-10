@@ -12,9 +12,11 @@ namespace CronosGod
         {
             CronExpression expressedCron = CronExpression.Parse(expression, CronFormat.IncludeSeconds);
             DateTime? next = expressedCron.GetNextOccurrence(DateTime.UtcNow);
-
+            Console.WriteLine("Today is: " + (DateTime.UtcNow));
+            Console.WriteLine("The next date is: " + (next.Value));
+         
             if (next == null) { throw new ArgumentException("l'expression est invalide"); }
-
+         
             return next.Value - DateTime.UtcNow;
         }
     }
